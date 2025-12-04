@@ -363,6 +363,7 @@ export function CanvasEditor() {
       cost: service.cost,
       processingTime: service.processingTime,
       delay: service.delay,
+      divisible: service.divisible,
       // Initialize parameter values with defaults from defaultValue
       ...Object.fromEntries(
         service.parameters.map(param => [
@@ -575,6 +576,11 @@ export function CanvasEditor() {
     document.documentElement.style.fontSize = `${uiScale}%`
   }, [uiScale])
 
+  // Clear selected service when switching API modes
+  useEffect(() => {
+    setSelectedServiceId(null)
+  }, [useLocalApi])
+
   // Initialize AI services based on use local api toggle
   useEffect(() => {
     const allowedServices = useLocalApi ? TOST_UI_LOCAL_API_SERVICES : availableServices.filter(s => s.home).map(s => s.id)
@@ -592,6 +598,7 @@ export function CanvasEditor() {
         cost: service.cost,
         processingTime: service.processingTime,
         delay: service.delay,
+        divisible: service.divisible,
         // Initialize parameter values with defaults from defaultValue
         ...Object.fromEntries(
           service.parameters.map(param => [
@@ -2181,6 +2188,10 @@ export function CanvasEditor() {
     const [widthRatio, heightRatio] = aspectRatio.split(':').map(Number)
     if (!widthRatio || !heightRatio) return { width: baseSize, height: baseSize }
 
+    // Get divisor from selected service
+    const selectedService = aiServices.find(s => s.id === selectedServiceId)
+    const divisor = selectedService?.divisible || 4
+
     // Calculate dimensions maintaining aspect ratio
     const ratio = widthRatio / heightRatio
     let width: number, height: number
@@ -2195,9 +2206,9 @@ export function CanvasEditor() {
       width = Math.round(baseSize * ratio)
     }
 
-    // Ensure divisible by 4
-    width = Math.ceil(width / 4) * 4
-    height = Math.ceil(height / 4) * 4
+    // Ensure divisible by the divisor
+    width = Math.ceil(width / divisor) * divisor
+    height = Math.ceil(height / divisor) * divisor
 
     return { width, height }
   }
@@ -2205,6 +2216,10 @@ export function CanvasEditor() {
   const addEmptyImageLayer = (width: number, height: number, aspectRatio: string) => {
     const canvas = canvasRef.current
     if (!canvas) return
+
+    // Get divisor from selected service
+    const selectedService = aiServices.find(s => s.id === selectedServiceId)
+    const divisor = selectedService?.divisible || 4
 
     // Create empty canvas with specified dimensions
     const emptyCanvas = document.createElement("canvas")
@@ -2227,10 +2242,10 @@ export function CanvasEditor() {
       // Use provided dimensions (max dimension constraint not applied to generated empty images)
       let finalWidth = width
       let finalHeight = height
-  
-      // Ensure they are divisible by 4
-      finalWidth = Math.ceil(finalWidth / 4) * 4
-      finalHeight = Math.ceil(finalHeight / 4) * 4
+
+      // Ensure they are divisible by the divisor
+      finalWidth = Math.ceil(finalWidth / divisor) * divisor
+      finalHeight = Math.ceil(finalHeight / divisor) * divisor
 
       const newLayer: Layer = {
         id: `layer-empty-${Date.now()}`,
@@ -4491,7 +4506,19 @@ export function CanvasEditor() {
     onClick={() => setShowGenerateEmptyImage(!showGenerateEmptyImage)}
     className="w-full p-4 text-left flex items-center justify-between hover:bg-muted/50 transition-colors"
   >
-    <h3 className="text-sm font-medium">Generate Empty Layer</h3>
+    <div>
+      <h3 className="text-sm font-medium">Generate Empty Layer</h3>
+      {!selectedServiceId ? (
+        <p className="text-xs text-muted-foreground mt-1">Select a service first</p>
+      ) : (
+        <p className="text-xs text-muted-foreground mt-1">
+          Divisor: {(() => {
+            const selectedService = aiServices.find(s => s.id === selectedServiceId)
+            return selectedService?.divisible || 4
+          })()}
+        </p>
+      )}
+    </div>
     <ChevronDown className={`w-4 h-4 transition-transform ${showGenerateEmptyImage ? 'rotate-180' : ''}`} />
   </button>
 
@@ -4502,6 +4529,7 @@ export function CanvasEditor() {
           variant="outline"
           size="sm"
           onClick={() => addEmptyImageLayer(1024, 1024, "1:1")}
+          disabled={!selectedServiceId}
           className="text-xs"
         >
           1:1 (1024×1024)
@@ -4510,6 +4538,7 @@ export function CanvasEditor() {
           variant="outline"
           size="sm"
           onClick={() => addEmptyImageLayer(1600, 900, "16:9")}
+          disabled={!selectedServiceId}
           className="text-xs"
         >
           16:9 (1600×900)
@@ -4518,6 +4547,7 @@ export function CanvasEditor() {
           variant="outline"
           size="sm"
           onClick={() => addEmptyImageLayer(900, 1600, "9:16")}
+          disabled={!selectedServiceId}
           className="text-xs"
         >
           9:16 (900×1600)
@@ -4526,6 +4556,7 @@ export function CanvasEditor() {
           variant="outline"
           size="sm"
           onClick={() => addEmptyImageLayer(1600, 800, "2:1")}
+          disabled={!selectedServiceId}
           className="text-xs"
         >
           2:1 (1600×800)
@@ -4576,6 +4607,7 @@ export function CanvasEditor() {
               variant="outline"
               size="sm"
               onClick={() => addEmptyImageLayer(width, height, customAspectRatio)}
+              disabled={!selectedServiceId}
               className="w-full text-xs"
             >
               Generate {customAspectRatio} ({Math.round(finalWidth)}×{Math.round(finalHeight)})

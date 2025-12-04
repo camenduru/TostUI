@@ -17,6 +17,7 @@ export interface AIService {
     processingTime: string
     delay: string
     examples?: { input: string[], output: string[] }
+    divisible?: number
 }
 
 export interface Parameter {
