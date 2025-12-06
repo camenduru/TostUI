@@ -19,7 +19,7 @@
 
 ### 🏠 Local Setup
 
-#### TostUI - Z-Image-Turbo (4bit)
+#### 🏠 TostUI - Z-Image-Turbo (4bit)
 
 1.  **Install Docker**\
     [Download Docker Desktop (Windows AMD64)](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
@@ -43,7 +43,7 @@
 4.  **Open app**\
     Go to: http://localhost:3000
 
-#### TostUI - Qwen Image Edit 2509 with LoRAs (8bit)
+#### 🏠 TostUI - Qwen Image Edit 2509 with LoRAs (8bit)
 `Convert to Anime` `Convert to Reality T1` `Convert to Reality T2`
 `Convert to Chibi`\
 `Convert to Ahegao` `Convert to Color` `Convert to Kiss`
@@ -74,7 +74,7 @@
 4.  **Open app**\
     Go to: http://localhost:3000
 
-#### TostUI - Z-Image-Turbo with Upscaler (8bit)
+#### 🏠 TostUI - Z-Image-Turbo with Upscaler (8bit)
 
 1.  **Install Docker**\
     [Download Docker Desktop (Windows AMD64)](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
@@ -97,7 +97,7 @@
 4.  **Open app**\
     Go to: http://localhost:3000
 
-#### TostUI - Wan 2.2 Image to Video (8bit)
+#### 🏠 TostUI - Wan 2.2 Image to Video (8bit)
 
 1.  **Install Docker**\
     [Download Docker Desktop (Windows AMD64)](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
