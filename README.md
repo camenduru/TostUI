@@ -21,7 +21,7 @@
 [![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/tostui?tab=readme-ov-file#-tostui---z-image-turbo-with-upscaler-8bit) | [![pod](https://github.com/user-attachments/assets/b1afe627-76ad-42fd-baaa-59be2259b224)](https://console.runpod.io/deploy?template=avc1aiksjc&ref=iqi9iy8y) | [![serverless](https://github.com/user-attachments/assets/99241dcd-7d87-4140-a779-d775bbbd674c)](https://console.runpod.io/deploy?template=xw7bgxhlhg&ref=iqi9iy8y) | TostUI - Z-Image-Turbo with Upscaler (8bit)
 [![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/tostui?tab=readme-ov-file#-tostui---wan-22-image-to-video-8bit) | [![pod](https://github.com/user-attachments/assets/b1afe627-76ad-42fd-baaa-59be2259b224)](https://console.runpod.io/deploy?template=rg49nppdgd&ref=iqi9iy8y) | [![serverless](https://github.com/user-attachments/assets/99241dcd-7d87-4140-a779-d775bbbd674c)](https://console.runpod.io/deploy?template=bu7is6ath4&ref=iqi9iy8y) | TostUI - Wan 2.2 Image to Video (8bit)
 
-`All services tested with an RTX 3090`
+`All services were tested with an RTX 3090, RTX 4090, and RTX 5090.`
 
 #### 🏠 TostUI - Tost Synth v1.0 (4K) (Z-Image-Turbo SeedVR2)
 
