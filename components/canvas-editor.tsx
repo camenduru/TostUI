@@ -3588,18 +3588,104 @@ export function CanvasEditor() {
 
             return updatedLayers
           })
-        }).catch(error => {
+        }).catch(async error => {
           console.error('Failed to generate GLB thumbnail:', error)
-          // Don't create layer if thumbnail generation fails
-          if (jobId) {
-            setServiceJobs(prev => prev.map(j => j.id === jobId ? {
-              ...j,
-              progress: 100,
-              status: "Failed to generate GLB thumbnail",
-              apiStatus: "FAILED",
-              result: { error: true, message: "Failed to generate GLB thumbnail" },
-              polling: false
-            } : j))
+          // Use dummy box thumbnail as fallback
+          try {
+            const dummyThumbnail = await generateDummyBoxThumbnail()
+            const croppedDummyThumbnail = await cropTransparent(dummyThumbnail)
+
+            // Use functional update to ensure we have the latest layers state
+            setLayers(currentLayers => {
+              // Find the current input layer by ID to get its current position/size
+              // First try to find it in current layers, then fall back to stored layer data
+              let inputLayer = foundJob?.layerId ? currentLayers.find(l => l.id === foundJob.layerId) : null
+              if (!inputLayer && foundJob?.inputLayer) {
+                // Use stored layer data as fallback if layer was deleted
+                inputLayer = foundJob.inputLayer
+              }
+
+              // Calculate dimensions maintaining aspect ratio, with max dimension if enabled
+              const aspectRatio = croppedDummyThumbnail.width / croppedDummyThumbnail.height
+
+              let width: number, height: number
+              if (maxDimensionEnabled) {
+                if (croppedDummyThumbnail.width > croppedDummyThumbnail.height) {
+                  // Landscape thumbnail
+                  width = Math.min(croppedDummyThumbnail.width, maxDimension)
+                  height = width / aspectRatio
+                } else {
+                  // Portrait or square thumbnail
+                  height = Math.min(croppedDummyThumbnail.height, maxDimension)
+                  width = height * aspectRatio
+                }
+              } else {
+                // Use original dimensions
+                width = croppedDummyThumbnail.width
+                height = croppedDummyThumbnail.height
+              }
+
+              // Ensure they are divisible by 4
+              width = Math.ceil(width / 4) * 4
+              height = Math.ceil(height / 4) * 4
+
+              // Create thumbnail layer (represents the GLB)
+              const thumbnailLayer: Layer = {
+                id: `layer-ai-glb-${Date.now()}`,
+                type: 'image',
+                image: croppedDummyThumbnail,
+                x: inputLayer ? inputLayer.x : 200,
+                y: inputLayer ? inputLayer.y : 200,
+                width,
+                height,
+                rotation: 0,
+                name: layerName,
+                visible: true,
+                isGlbThumbnail: true,
+                glbUrl: glbUrl,
+                delayTime: timing?.delayTime,
+                executionTime: timing?.executionTime,
+                prompt,
+                instruction,
+                resultUrl,
+                serviceId: service.id,
+                billing,
+              }
+
+              const updatedLayers = [...currentLayers, thumbnailLayer]
+              setSelectedLayerIds([thumbnailLayer.id])
+              saveToHistory(updatedLayers, [thumbnailLayer.id])
+
+              // Force canvas redraw by triggering state update
+              setForceRedraw(prev => prev + 1)
+
+              return updatedLayers
+            })
+
+            // Update job status to success
+            if (jobId) {
+              setServiceJobs(prev => prev.map(j => j.id === jobId ? {
+                ...j,
+                progress: 100,
+                status: "AI generated GLB added to canvas successfully!",
+                apiStatus: "COMPLETED",
+                result: { success: true, message: "AI generated GLB added to canvas successfully!" },
+                polling: false
+              } : j))
+            }
+          } catch (dummyError) {
+            console.error('Failed to generate dummy thumbnail:', dummyError)
+            // Now fail the job
+            if (jobId) {
+              setServiceJobs(prev => prev.map(j => j.id === jobId ? {
+                ...j,
+                progress: 100,
+                status: "Failed to generate GLB thumbnail",
+                apiStatus: "FAILED",
+                result: { error: true, message: "Failed to generate GLB thumbnail" },
+                polling: false
+              } : j))
+            }
           }
         })
 
