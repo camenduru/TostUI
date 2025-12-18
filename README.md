@@ -28,6 +28,8 @@
 
 ![Image](https://github.com/user-attachments/assets/33bc9dca-dd23-4c67-a40d-41cf8e19fc71)
 
+Video: https://x.com/camenduru/status/2001478162996191317
+
 1.  **Install Docker**\
     [Download Docker Desktop (Windows AMD64)](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
     and run it.
