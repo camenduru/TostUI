@@ -13,7 +13,7 @@
 
 | Local | Pod | Serverless | Info 
 | --- | --- | --- | --- |
-[![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/tostui?tab=readme-ov-file#-tostui---wan-22-image-to-video-8bit) | | | TostUI - Wan 2.2 First Last Frame (8bit)
+[![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/TostUI#-tostui---wan-22-first-last-frame-8bit) | | | TostUI - Wan 2.2 First Last Frame (8bit)
 [![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/tostui?tab=readme-ov-file#-tostui---trellis-2) | | | TostUI - Trellis 2
 [![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/tostui?tab=readme-ov-file#-tostui---tost-synth-v10-z-image-turbo-seedvr2) | | | TostUI - Tost Synth v1.0 (4K)
 [![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/tostui?tab=readme-ov-file#-tostui---seedvr2) | | | TostUI - SeedVR2
@@ -25,7 +25,7 @@
 
 `All services were tested with an RTX 3090, RTX 4090, and RTX 5090.`
 
-#### 🍞 TostUI - Wan 2.2 Image to Video (8bit)
+#### 🍞 TostUI - Wan 2.2 First Last Frame (8bit)
 
 1.  **Install Docker**\
     [Download Docker Desktop (Windows AMD64)](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
