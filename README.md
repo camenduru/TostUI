@@ -13,6 +13,7 @@
 
 | Local | Pod | Serverless | Info 
 | --- | --- | --- | --- |
+[![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/TostUI#-tostui---genfocus-deblurnet-8bit) | | | TostUI - GenFocus DeblurNet (8bit)
 [![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/TostUI#-tostui---wan-22-first-last-frame-8bit) | | | TostUI - Wan 2.2 First Last Frame (8bit)
 [![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/tostui?tab=readme-ov-file#-tostui---trellis-2) | | | TostUI - Trellis 2
 [![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/tostui?tab=readme-ov-file#-tostui---tost-synth-v10-z-image-turbo-seedvr2) | | | TostUI - Tost Synth v1.0 (4K)
@@ -24,6 +25,31 @@
 [![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/tostui?tab=readme-ov-file#-tostui---wan-22-image-to-video-8bit) | [![pod](https://github.com/user-attachments/assets/b1afe627-76ad-42fd-baaa-59be2259b224)](https://console.runpod.io/deploy?template=rg49nppdgd&ref=iqi9iy8y) | [![serverless](https://github.com/user-attachments/assets/99241dcd-7d87-4140-a779-d775bbbd674c)](https://console.runpod.io/deploy?template=bu7is6ath4&ref=iqi9iy8y) | TostUI - Wan 2.2 Image to Video (8bit)
 
 `All services were tested with an RTX 3090, RTX 4090, and RTX 5090.`
+
+#### 🍞 TostUI - GenFocus DeblurNet (8bit)
+
+![Screenshot 2025-12-21 085935](https://github.com/user-attachments/assets/8a75fb6b-ba28-4844-a69c-cb6e3c84a3cf)
+
+1.  **Install Docker**\
+    [Download Docker Desktop (Windows AMD64)](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
+    and run it.
+
+2.  **Update the container (optional)**
+
+    ``` bash
+    docker stop tostui-genfocus; docker rm tostui-genfocus; docker pull camenduru/tostui-genfocus
+    ```
+
+3.  **Run the container**
+
+    ``` bash
+    docker run --gpus all -p 3000:3000 --name tostui-genfocus camenduru/tostui-genfocus
+    ```
+
+    *Requires NVIDIA GPU (Min 24GB VRAM)*
+
+4.  **Open app**\
+    Go to: http://localhost:3000
 
 #### 🍞 TostUI - Wan 2.2 First Last Frame (8bit)
 
