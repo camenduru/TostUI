@@ -13,7 +13,7 @@
 
 | Local | Pod | Serverless | Info 
 | --- | --- | --- | --- |
-[![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/TostUI#-tostui---qwen-image-edit-2511-8bit) | | | TostUI - Qwen Image Edit 2511 (8bit)
+[![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/TostUI#-tostui---qwen-image-edit-2511-8bit) | [![pod](https://github.com/user-attachments/assets/b1afe627-76ad-42fd-baaa-59be2259b224)](https://console.runpod.io/deploy?template=8225iajw8i&ref=iqi9iy8y) | | TostUI - Qwen Image Edit 2511 (8bit)
 [![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/TostUI#-tostui---genfocus-deblurnet-8bit) | | | TostUI - GenFocus DeblurNet (8bit)
 [![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/TostUI#-tostui---wan-22-first-last-frame-8bit) | | | TostUI - Wan 2.2 First Last Frame (8bit)
 [![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/tostui?tab=readme-ov-file#-tostui---trellis-2) | [![pod](https://github.com/user-attachments/assets/b1afe627-76ad-42fd-baaa-59be2259b224)](https://console.runpod.io/deploy?template=oqkubhl5l9&ref=iqi9iy8y) | | TostUI - Trellis 2
