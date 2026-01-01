@@ -13,6 +13,7 @@
 
 | Local | Pod | Serverless | Info 
 | --- | --- | --- | --- |
+[![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/TostUI#-tostui---song-generation-base-new) | | | TostUI - Song Generation (base-new)
 [![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/TostUI#-tostui---flux2-dev-8bit) | | | TostUI - Flux.2 [dev] (8bit)
 [![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/TostUI#-tostui---qwen-image-edit-2511-8bit) | [![pod](https://github.com/user-attachments/assets/b1afe627-76ad-42fd-baaa-59be2259b224)](https://console.runpod.io/deploy?template=8225iajw8i&ref=iqi9iy8y) | | TostUI - Qwen Image Edit 2511 (8bit)
 [![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/TostUI#-tostui---genfocus-deblurnet-8bit) | | | TostUI - GenFocus DeblurNet (8bit)
@@ -27,6 +28,31 @@
 [![local](https://github.com/user-attachments/assets/2b9a6ec2-e6cd-4415-9553-6c7bfb5e7722)](https://github.com/camenduru/tostui?tab=readme-ov-file#-tostui---wan-22-image-to-video-8bit) | [![pod](https://github.com/user-attachments/assets/b1afe627-76ad-42fd-baaa-59be2259b224)](https://console.runpod.io/deploy?template=rg49nppdgd&ref=iqi9iy8y) | [![serverless](https://github.com/user-attachments/assets/99241dcd-7d87-4140-a779-d775bbbd674c)](https://console.runpod.io/deploy?template=bu7is6ath4&ref=iqi9iy8y) | TostUI - Wan 2.2 Image to Video (8bit)
 
 `All services were tested with an RTX 3090, RTX 4090, and RTX 5090.`
+
+#### 🍞 TostUI - Song Generation (base-new)
+
+https://github.com/user-attachments/assets/40f9fc76-db11-423b-b2f2-1f39e01302d9
+
+1.  **Install Docker**\
+    [Download Docker Desktop (Windows AMD64)](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
+    and run it.
+
+2.  **Update the container (optional)**
+
+    ``` bash
+    docker stop tostui-songgeneration; docker rm tostui-songgeneration; docker pull camenduru/tostui-songgeneration
+    ```
+
+3.  **Run the container**
+
+    ``` bash
+    docker run --gpus all -p 3000:3000 --name tostui-songgeneration camenduru/tostui-songgeneration
+    ```
+
+    *Requires NVIDIA GPU (Min 14GB VRAM)*
+
+4.  **Open app**\
+    Go to: http://localhost:3000
 
 #### 🍞 TostUI - Flux.2 [dev] (8bit)
 
